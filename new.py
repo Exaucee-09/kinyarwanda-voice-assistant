@@ -1,4 +1,4 @@
-#file containing other question answer pairs
+# file containing other question answer pairs that will be recorded and tested later
 # This file contains various question-answer pairs in Kinyarwanda
 
 # General World QA Pairs
