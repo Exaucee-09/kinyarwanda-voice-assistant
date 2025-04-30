@@ -4,12 +4,11 @@ A voice assistant that understands and responds in Kinyarwanda language using th
 
 ## Project Structure
 
-- `voice_assistant.py`: Main application that integrates all components
+- `simple_assistant.py`: Main application that integrates all components
 - `asr.py`: Speech recognition component using KinyaWhisper
 - `tts.py`: Text-to-speech component using gTTS
 - `nlp.py`: Natural language processing component with Q&A matching
-- `record_samples.py`: Tool for recording sample audio for testing and training
-- `manualRecording.py`: Original script for recording samples
+- `manualRecording.py`: Original script for recording samples, automated recording
 
 ## Setup Instructions
 
@@ -35,7 +34,7 @@ The system will automatically download the KinyaWhisper model from Hugging Face 
 You can record your own voice samples to test the system:
 
 ```bash
-python record_samples.py
+python manualRecord.py
 ```
 
 This will guide you through recording questions and answers in Kinyarwanda.
@@ -45,17 +44,14 @@ This will guide you through recording questions and answers in Kinyarwanda.
 To start the voice assistant:
 
 ```bash
-python voice_assistant.py
+python simple_assistant.py
 ```
-
-Choose option 1 to run the assistant in interactive mode, or option 2 to test with a pre-recorded audio file.
 
 ## Usage
 
 1. The assistant will greet you in Kinyarwanda
 2. Speak your question or command in Kinyarwanda
-3. The assistant will process your speech, match it to the closest question in its database, and respond
-4. To exit, say "gusoza" (finish) or "murabeho" (goodbye)
+3. The assistant will process your speech, match it to the closest question in its database, and respond.
 
 ## Extending the Assistant
 
@@ -70,7 +66,7 @@ qa_pairs.update({
 })
 ```
 
-After adding new pairs, record voice samples using `record_samples.py` for testing.
+After adding new pairs, record voice samples using `manualRecord` file.
 
 ### Improving Speech Recognition
 
@@ -80,13 +76,23 @@ The KinyaWhisper model provides basic Kinyarwanda speech recognition. For better
 2. Speak clearly and at a normal pace
 3. Use proper Kinyarwanda pronunciation
 
+## Accessing the KinyaWhisper model
+
+The model can be accessed on hugging face after signing up or logging up and the using the hugging-cli loging in with the token that you will be asked to generate
+
+```
+huggingface-cli login
+```
+
 ## Troubleshooting
 
 - **No sound output**: Check your speaker settings and ensure pygame is working properly
-- **Poor recognition**: Try recording in a quieter environment or adjust the `SILENCE_THRESHOLD` in `voice_assistant.py`
-- **Model download issues**: Ensure you have a good internet connection for the first run
+- **Model download issues**: Ensure you have a good internet connection for the first run and you have downloaded all dependencies needed.
 
 ## Credits
 
 - ASR Model: [benax-rw/KinyaWhisper](https://huggingface.co/benax-rw/KinyaWhisper)
 - TTS: Google Text-to-Speech (gTTS)
+
+## Author
+- Peace Exaucee
