@@ -6,13 +6,25 @@
 
 from transformers import pipeline
 import torch
+import os
 
 class KinyarwandaASR:
     def __init__(self):
         # Initialize the ASR model
         print("Loading KinyaWhisper ASR model...")
-        self.asr = pipeline(model="benax-rw/KinyaWhisper", device=0 if torch.cuda.is_available() else -1)
-        print("ASR model loaded successfully!")
+        try:
+            # Use CUDA if available, otherwise CPU
+            device = 0 if torch.cuda.is_available() else -1
+            self.asr = pipeline(model="benax-rw/KinyaWhisper", device=device)
+            print("ASR model loaded successfully!")
+        except Exception as e:
+            print(f"Error loading model: {e}")
+            print("Attempting to load with specific cache directory...")
+            # Try with specific cache directory
+            cache_dir = os.path.join(os.path.expanduser("~"), ".cache", "huggingface")
+            os.makedirs(cache_dir, exist_ok=True)
+            self.asr = pipeline(model="benax-rw/KinyaWhisper", device=-1, cache_dir=cache_dir)
+            print("ASR model loaded with alternate configuration.")
     
     def transcribe_audio(self, audio_file_path):
         """

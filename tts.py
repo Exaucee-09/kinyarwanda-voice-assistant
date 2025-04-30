@@ -40,7 +40,7 @@ class KinyarwandaTTS:
             # Generate TTS if not already cached
             if text not in self.audio_cache:
                 print(f"Generating TTS for: {text}")
-                tts = gTTS(text=text, lang='rw')  # 'rw' is the language code for Kinyarwanda
+                tts = gTTS(text=text, lang='sw')  # 'rw' is the language code for Kinyarwanda
                 tts.save(filepath)
                 self.audio_cache[text] = filepath
             

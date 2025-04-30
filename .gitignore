@@ -2,3 +2,6 @@ myenv3.10/
 __pycache__/
 .qodo/
 .dist/
+new.py
+voice_assistant.py
+record_samples.py
