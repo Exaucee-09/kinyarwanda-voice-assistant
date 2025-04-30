@@ -1,0 +1,4 @@
+myenv3.10/
+__pycache__/
+.qodo/
+.dist/
