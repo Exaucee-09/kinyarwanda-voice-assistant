@@ -5,3 +5,4 @@ __pycache__/
 new.py
 voice_assistant.py
 record_samples.py
+setup.sh
